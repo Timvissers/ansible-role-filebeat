@@ -23,4 +23,5 @@ filebeat_log_filename: mybeat.log
 filebeat_ssl_dir: /etc/pki/logstash
 filebeat_ssl_certificate_file: ""
 filebeat_ssl_key_file: ""
+filebeat_ssl_certificate_authorities: ""
 filebeat_ssl_insecure: "false"

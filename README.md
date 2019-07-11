@@ -51,9 +51,12 @@ Filebeat logging.
 The path where certificates and keyfiles will be stored.
 
     filebeat_ssl_certificate_file: ""
-    filebeat_ssl_key_file: ""
+    filebeat_ssl_key_file: ""    
 
 Local paths to the SSL certificate and key files, which will be copied into the `filebeat_ssl_dir`.
+
+Besides support for no tls and mutual tls, including also support for server side only tls, by adding a CA file variable `filebeat_ssl_certificate_authority`.
+
 
 For utmost security, you should use your own valid certificate and keyfile, and update the `filebeat_ssl_*` variables in your playbook to use your certificate.
 

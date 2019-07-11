@@ -57,7 +57,7 @@ output:
     #topology_expire: 15
 
 {% if filebeat_ssl_certificate_file and filebeat_ssl_key_file %}
-    # tls configuration. By default is off.
+    # mutual tls configuration. By default is off.
     tls:
       # List of root certificates for HTTPS server verifications
       #certificate_authorities: ["/etc/pki/root/ca.pem"]
@@ -85,6 +85,15 @@ output:
 
       # Configure maximum TLS version allowed for connection to logstash
       #max_version: 1.2
+
+{% if filebeat_ssl_certificate_authority %}
+    # server side only tls
+    tls:
+      # List of root certificates for HTTPS server verifications
+      certificate_authorities:
+        - "{{ filebeat_ssl_dir }}/{{ filebeat_ssl_certificate_authority}}"
+{% endif %}
+
 {% endif %}
 {% endif %}
 
@@ -129,6 +138,15 @@ output:
 
       # Configure curve types for ECDHE based cipher suites
       #curve_types: []
+
+{% endif %}
+
+{% if filebeat_ssl_certificate_authority %}
+    # server side only tls
+    tls:
+      # List of root certificates for HTTPS server verifications
+      certificate_authorities:
+        - "{{ filebeat_ssl_dir }}/{{ filebeat_ssl_certificate_authority}}"
 {% endif %}
 
 {% if filebeat_enable_logging %}
